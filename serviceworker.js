@@ -1,4 +1,4 @@
-const CACHE_NAME = "version-2";
+const CACHE_NAME = "version-1";
 const urlsToCache = ["index.html", "offline.html"];
 
 const self = this;
@@ -9,14 +9,13 @@ self.addEventListener("install", async (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-  event.respondWith(async () => {
-    try {
-      const request = await fetch(event.request);
-      return request;
-    } catch {
-      return caches.match("offline.html");
-    }
-  });
+  event.respondWith(
+    caches
+      .match(event.request)
+      .then(() =>
+        fetch(event.request).catch(() => caches.match("offline.html"))
+      )
+  );
 });
 
 self.addEventListener("activate", (event) => {

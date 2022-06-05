@@ -1,24 +1,22 @@
-const CACHE_NAME = "version-1";
+const CACHE_NAME = "version-2";
 const urlsToCache = ["index.html", "offline.html"];
 
 const self = this;
 
-self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(urlsToCache);
-    })
-  );
+self.addEventListener("install", async (event) => {
+  const cache = await caches.open(CACHE_NAME);
+  await cache.addAll(urlsToCache);
 });
 
 self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    caches
-      .match(event.request)
-      .then(() =>
-        fetch(event.request).catch(() => caches.match("offline.html"))
-      )
-  );
+  event.respondWith(async () => {
+    try {
+      const request = await fetch(event.request);
+      return request;
+    } catch {
+      return caches.match("offline.html");
+    }
+  });
 });
 
 self.addEventListener("activate", (event) => {

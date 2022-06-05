@@ -455,5 +455,6 @@
   "start_url": "/pwa-weather-application/",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "description": "Access weather information by the city by typing its name into the search bar."
 }

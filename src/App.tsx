@@ -11,7 +11,7 @@ import {
 import { api } from "./api";
 import { UIContext } from "./context";
 
-const bgImg = require("./images/bg.jpg");
+const bgImg = require("./images/bg.avif");
 
 const App = () => {
   const [query, setQuery] = React.useState("");

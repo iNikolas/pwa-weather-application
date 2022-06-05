@@ -1,4 +1,4 @@
-const CACHE_NAME = "version-1";
+const CACHE_NAME = "version-2";
 const urlsToCache = ["index.html", "offline.html"];
 
 const self = this;
@@ -18,19 +18,11 @@ self.addEventListener("fetch", (event) => {
   );
 });
 
-self.addEventListener("activate", (event) => {
-  const cacheWhitelist = [];
-  cacheWhitelist.push(CACHE_NAME);
-
-  event.waitUntil(
-    caches.keys().then((cacheNames) =>
-      Promise.all(
-        cacheNames.map((cacheName) => {
-          if (!cacheWhitelist.includes(cacheName)) {
-            return caches.delete(cacheName);
-          }
-        })
-      )
-    )
+self.addEventListener("activate", async (event) => {
+  const cacheNames = await caches.keys();
+  await Promise.all(
+    cacheNames
+      .filter((name) => name !== CACHE_NAME)
+      .map((name) => caches.delete(name))
   );
 });

@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/pwa-weather-application/static/js/main.1d12f806.js",
-    "static/media/bg.jpg": "/pwa-weather-application/static/media/bg.7b83f7cda99cf768cbb6.jpg",
+    "main.js": "/pwa-weather-application/static/js/main.65184110.js",
+    "static/media/bg.avif": "/pwa-weather-application/static/media/bg.81490a96627116182f9b.avif",
     "index.html": "/pwa-weather-application/index.html",
-    "main.1d12f806.js.map": "/pwa-weather-application/static/js/main.1d12f806.js.map"
+    "main.65184110.js.map": "/pwa-weather-application/static/js/main.65184110.js.map"
   },
   "entrypoints": [
-    "static/js/main.1d12f806.js"
+    "static/js/main.65184110.js"
   ]
 }
